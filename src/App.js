@@ -22,6 +22,7 @@ function App() {
         <Route path='login' element={<Login></Login>}></Route>
         <Route path='signup' element={<Signup></Signup>}></Route>
         <Route path='purchase/:id' element={<RequireAuth><Purchase></Purchase></RequireAuth>}></Route>
+        
         <Route path='dashboard' element={<RequireAuth><Dashboard></Dashboard></RequireAuth>}>
           <Route path='myOrder' element={<AddReview></AddReview>}></Route>
           <Route index element={<Myitem></Myitem>}></Route>

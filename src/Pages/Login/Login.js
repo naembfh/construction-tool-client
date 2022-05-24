@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import auth from '../../firebase.init';
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import Loading from '../Shared/Loading';
+import useToken from '../../Hooks/useToken';
+import Purchase from '../Purchase';
 
 
 
@@ -16,6 +18,18 @@ const Login = () => {
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
+    const [token]=useToken(user,gUser)
+    const navigate=useNavigate()
+    let location = useLocation();
+    
+    let from = location.state?.from?.pathname || "/";
+
+   
+    useEffect( () =>{
+        if (token) {
+            navigate(from, { replace: true });
+        }
+    }, [token, from, navigate])
     let errorElement;
     if(error|| gError){
         errorElement= <p className='text-primary'><small>{error?.message || gError?.message }</small></p>
