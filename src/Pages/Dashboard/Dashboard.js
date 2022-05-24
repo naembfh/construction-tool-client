@@ -22,6 +22,7 @@ const Dashboard = () => {
                     {/* <!-- Sidebar content here --> */}
                     <li><NavLink to="/dashboard">My Orders</NavLink></li>
                     <li><NavLink to="/dashboard/myOrder">Add A Review </NavLink></li>
+                    <li><NavLink to="/dashboard/users">Users </NavLink></li>
                    
                     
                 </ul>
