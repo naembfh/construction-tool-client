@@ -19,6 +19,7 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
     const [token]=useToken(user,gUser)
+    console.log(token)
     const navigate=useNavigate()
     let location = useLocation();
     
@@ -26,10 +27,10 @@ const Login = () => {
 
    
     useEffect( () =>{
-        if (token) {
+        if (user || gUser) {
             navigate(from, { replace: true });
         }
-    }, [token, from, navigate])
+    }, [user,gUser, from, navigate])
     let errorElement;
     if(error|| gError){
         errorElement= <p className='text-primary'><small>{error?.message || gError?.message }</small></p>
