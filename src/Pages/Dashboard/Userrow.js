@@ -10,10 +10,19 @@ fetch(`http://localhost:5000/user/admin/${email}`,{
         authorization:`Bearer ${localStorage.getItem('accessToken')}`
     }
 })
-.then(res=>res.json())
+.then(res=>{
+    if(res.status===403){
+        toast('Failed to Add Admin')
+    }
+  return  res.json()
+})
 .then(data=>{
-    refetch()
-    toast('Admin Added')
+    if(data.modifiedCount>0){
+
+       refetch()
+    toast('Succesfully Admin Added')
+     
+    }
    
 })
     }
