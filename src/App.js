@@ -18,6 +18,7 @@ import Payment from './Pages/Dashboard/Payment';
 import ManageOrders from './Pages/Dashboard/ManageOrders';
 import ManageProducts from './Pages/Dashboard/ManageProducts';
 import Myprofile from './Pages/Dashboard/Myprofile';
+import Notfound from './Pages/Shared/Notfound';
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
           <Route path='order/:id' element={<Payment></Payment>}></Route>
           <Route index element={<Myitem></Myitem>}></Route>
         </Route>
+        <Route path='*' element={<Notfound></Notfound>}></Route>
       </Routes>
       <ToastContainer></ToastContainer>
     </div>
