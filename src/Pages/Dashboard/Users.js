@@ -22,6 +22,7 @@ const Users = () => {
     <thead>
       <tr>
         <th>Index</th>
+        <th>Name</th>
         <th>Email</th>
         <th>Admin</th>
 

@@ -12,7 +12,7 @@ const CheckoutForm = ({myorder}) => {
   console.log(clientSecret)
 
 useEffect(()=>{
-    fetch('http://localhost:5000/create-payment-intent', {
+    fetch('', {
         method: 'POST',
         headers: {
             'content-type': 'application/json',
