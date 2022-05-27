@@ -7,13 +7,20 @@ const Review = ({review}) => {
     const {rating,comment}=review;
     return (
         <div>
-            <Rating
+<div class="card w-96 bg-base-100 shadow-xl">
+  <div class="card-body">
+       <Rating
     initialRating={rating}
     emptySymbol={<FontAwesomeIcon icon={faStar} />}
     fullSymbol={<FontAwesomeIcon style={{color: 'goldenrod'}} icon={faStar} />}
     readonly
-></Rating>
-<div><p>{comment}</p></div>
+></Rating><p>{comment}</p>
+  </div>
+</div>
+
+            
+         
+
         </div>
     );
 };

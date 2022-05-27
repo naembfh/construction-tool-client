@@ -1,19 +1,20 @@
 import React from 'react';
 import '../Home/Banner.css'
 const Banner = () => {
+    // style="background-image: url(https://api.lorem.space/image/fashion?w=1000&h=800);"
     return (
-         <div className="container">
-             <div className=' h-screen' style={{ 
-            backgroundImage: `url("https://i.ibb.co/TWqsbmn/37632.jpg")` ,
-            backgroundSize:'cover'
-          }}>
-            
+        <div class="hero min-h-screen"  style={{ 
+            backgroundImage: `url("https://i.ibb.co/TWqsbmn/37632.jpg")` 
+          }} >
+        <div class="hero-overlay bg-opacity-60"></div>
+        <div class="hero-content text-center text-neutral-content">
+          <div class="max-w-md">
+            <h1 class="mb-5 text-5xl font-bold">Hello there</h1>
+            <p class="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+            <button class="btn btn-primary">Get Started</button>
           </div>
-          <div className='text-block'>
-          <h4>Nature</h4>
-    <p>What a beautiful sunrise</p>
-  </div>
-         </div>
+        </div>
+      </div>
     );
 };
 

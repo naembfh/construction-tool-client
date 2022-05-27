@@ -10,13 +10,16 @@ const Products = () => {
         .then(data=>setProducts(data))
     },[])
     return (
-        <div>
-            <h1>Our Products {products.length}</h1>
+       <div>
+           <h1>Our Products Number {products.length}</h1>
+            <div className='grid grid-cols-3 gap-4'>
+            
             {products.map(product=> <Product
             product={product}
             key={product._id}
             ></Product>)}
         </div>
+       </div>
     );
 };
 

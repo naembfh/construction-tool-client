@@ -9,12 +9,15 @@ fetch('http://localhost:5000/reviews')
 .then(data=>setReviews(data))
     },[])
     return (
-        <div>
+       <div>
+           <h1>What our customers say</h1>
+            <div className='grid grid-cols-4 gap-3'>
             {reviews.map(review=> <Review
             key={review._id}
             review={review}
             ></Review>)}
         </div>
+       </div>
     );
 };
 
