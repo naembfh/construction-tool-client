@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import Product from '../Home/Product';
 
 const ManageProducts = () => {
+    const [products,setProducts]=useState([])
+    useEffect(()=>{
+        const url='http://localhost:5000/product'
+        fetch(url)
+        .then(res=>res.json())
+        .then(data=>setProducts(data))
+    },[])
+    
     return (
         <div>
-            Manage Producr
+            <h1>Our Products {products.length}</h1>
+            {products.map(product=> <Product
+            product={product}
+            key={product._id}
+            ></Product>)}
         </div>
     );
 };

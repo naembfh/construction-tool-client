@@ -19,6 +19,7 @@ import ManageOrders from './Pages/Dashboard/ManageOrders';
 import ManageProducts from './Pages/Dashboard/ManageProducts';
 import Myprofile from './Pages/Dashboard/Myprofile';
 import Notfound from './Pages/Shared/Notfound';
+import Footer from './Pages/Shared/Footer';
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
         </Route>
         <Route path='*' element={<Notfound></Notfound>}></Route>
       </Routes>
+      <Footer></Footer>
       <ToastContainer></ToastContainer>
     </div>
   );

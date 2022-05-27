@@ -1,8 +1,13 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
+import auth from '../../firebase.init';
+import useAdmin from '../../Hooks/useAdmin';
 
 const Product = ({product}) => {
+  const [user]=useAuthState(auth)
     const {_id,name,img,description,quantity,minimumOrder,price}=product;
+    const [admin]=useAdmin(user)
     
     return (
         <div class="card w-96 bg-base-100 shadow-xl">
@@ -16,9 +21,12 @@ const Product = ({product}) => {
     <h3>In Stock {quantity} Unit</h3>
     <h3>Minium order {minimumOrder} Applicable</h3>
 
-    <div class="card-actions">
+    {!admin && <div class="card-actions">
       <Link className='btn btn-primary'  to={`/purchase/${_id}`}>Buy Now</Link>
-    </div>
+    </div>}
+    {
+      admin && <button className='btn btn-primary' >Delete Product</button>
+    }
   </div>
 </div>
     );
