@@ -9,9 +9,9 @@ fetch('http://localhost:5000/reviews')
 .then(data=>setReviews(data))
     },[])
     return (
-       <div>
-           <h1>What our customers say</h1>
-            <div className='grid grid-cols-4 gap-3'>
+       <div className='container border'>
+           <h1 className='text-3xl text-center mt-3'>Reviews And FeedBack</h1>
+            <div className='grid grid-cols-3 gap-2'>
             {reviews.map(review=> <Review
             key={review._id}
             review={review}
