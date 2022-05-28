@@ -7,7 +7,7 @@ const Myitem = () => {
     const [user, loading, error] = useAuthState(auth);
     const [myItems, setMyItem] = useState([])
     useEffect(() => {
-        const url = `http://localhost:5000/orders?email=${user?.email}`
+        const url = `https://polar-shelf-77839.herokuapp.com/orders?email=${user?.email}`
         fetch(url,{
             method: 'GET',
             headers: {

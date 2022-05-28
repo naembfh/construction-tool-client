@@ -4,7 +4,7 @@ import Product from './Product';
 const Products = () => {
     const [products,setProducts]=useState([])
     useEffect(()=>{
-        const url='http://localhost:5000/product'
+        const url='https://polar-shelf-77839.herokuapp.com/product'
         fetch(url)
         .then(res=>res.json())
         .then(data=>setProducts(data))

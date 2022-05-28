@@ -17,7 +17,7 @@ const Purchase = () => {
     const [newOrder, setNewOrder] = useState(true)
 
     useEffect(() => {
-        fetch(`http://localhost:5000/product/${id}`)
+        fetch(`https://polar-shelf-77839.herokuapp.com/product/${id}`)
             .then(res => res.json())
             .then(data => setProduct(data))
     }, [id])
@@ -43,7 +43,7 @@ const Purchase = () => {
             data.totalPrice = newPrice;
             data.name=name;
             console.log(data)
-            const url = 'http://localhost:5000/orders'
+            const url = 'https://polar-shelf-77839.herokuapp.com/orders'
             fetch(url, {
                 method: "POST",
                 headers: {
