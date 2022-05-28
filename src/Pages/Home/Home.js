@@ -5,7 +5,8 @@ import Banner from './Banner';
 import Contact from './Contact';
 import Products from './Products';
 import SpecialService from './SpecialService';
-import Summary from './Summary';
+import Summerys from './Summerys';
+
 
 const Home = () => {
     return (
@@ -13,8 +14,8 @@ const Home = () => {
             <Banner></Banner>
             <Products></Products>
             <Reviews></Reviews>
-            <Summary></Summary>
-           
+            
+           <Summerys></Summerys>
             <SpecialService></SpecialService>
             <Contact></Contact>
         </div>

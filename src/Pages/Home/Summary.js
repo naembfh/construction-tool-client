@@ -1,26 +1,17 @@
+
 import React from 'react';
 
-const Summary = () => {
+const Summary = ({img,p,n,bgClass}) => {
     return (
-        <div>
-           <div >
-           <div className='flex flex-row'>
-           <div>
-               <img src="" alt="" srcset="" />
-               <p>4</p>
-               <p>Countries</p>
-           </div>
-               <img src="" alt="" />
-               <p>50+</p>
-               <p>Happy Clients</p>
-           </div>
-           <div>
-               <img src="" alt="" srcset="" />
-               <p>100+</p>
-               <p>Feedbacks</p>
-           </div>
-           
-           </div>
+        <div className={`card lg:card-side bg-base-100 shadow-xl ${bgClass}`}>
+            <figure className='pl-5 pt-5'>
+                <img src={img} alt="Album" />
+            </figure>
+            <div className="card-body text-white">
+                <h2 className="card-title">{n}</h2>
+                <p>{p}</p>
+                
+            </div>
         </div>
     );
 };

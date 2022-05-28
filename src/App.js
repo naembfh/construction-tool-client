@@ -21,6 +21,7 @@ import Myprofile from './Pages/Dashboard/Myprofile';
 import Notfound from './Pages/Shared/Notfound';
 import Footer from './Pages/Shared/Footer';
 import Blogs from './Pages/Blogs';
+import Portfolio from './Pages/Portfolio';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='login' element={<Login></Login>}></Route>
         <Route path='signup' element={<Signup></Signup>}></Route>
+        <Route path='portfolio' element={<Portfolio></Portfolio>}></Route>
         <Route path='blogs' element={<Blogs></Blogs>}></Route>
         <Route path='purchase/:id' element={<RequireAuth><Purchase></Purchase></RequireAuth>}></Route>
         
