@@ -4,15 +4,15 @@ import Product from './Product';
 const Products = () => {
     const [products,setProducts]=useState([])
     useEffect(()=>{
-        const url='https://polar-shelf-77839.herokuapp.com/product'
+        const url='http://localhost:5000/product'
         fetch(url)
         .then(res=>res.json())
         .then(data=>setProducts(data))
     },[])
     return (
        <div>
-           <h1>Our Products Number {products.length}</h1>
-            <div className='grid grid-cols-3 gap-4'>
+           <h1 className='text-3xl text-center m-3'>Our Products Number {products.length}</h1>
+            <div className='grid md:grid-cols-3 sm:grid-cols-1 gap-4 m-4'>
             
             {products.map(product=> <Product
             product={product}

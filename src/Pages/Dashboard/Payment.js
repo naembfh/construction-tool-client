@@ -9,7 +9,7 @@ const stripePromise = loadStripe('pk_test_51L3TYRGWFP0zytG4MSCWcHjz9vrMm3ug9NiT9
 
 const Payment = () => {
     const {id}=useParams()
-    const url=`https://polar-shelf-77839.herokuapp.com/orders/${id}`
+    const url=`http://localhost:5000/orders/${id}`
     const {data:myorder,isLoading}=useQuery(['order',id],()=> fetch(url,{
         method: 'GET',
         headers: {

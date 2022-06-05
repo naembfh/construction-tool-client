@@ -17,7 +17,7 @@ const Purchase = () => {
     const [newOrder, setNewOrder] = useState(true)
 
     useEffect(() => {
-        fetch(`https://polar-shelf-77839.herokuapp.com/product/${id}`)
+        fetch(`http://localhost:5000/product/${id}`)
             .then(res => res.json())
             .then(data => setProduct(data))
     }, [id])
@@ -35,15 +35,13 @@ const Purchase = () => {
 
 
     const onsubmit = data => {
-        if (data.totalOrder < minimumOrder || data.totalOrder > quantity) {
-            toast('can not');
-            setNewOrder(false)
-        } else {
-            const newPrice = price * data.totalOrder;
+    
+           
+              const newPrice = price * data.totalOrder;
             data.totalPrice = newPrice;
             data.name=name;
             console.log(data)
-            const url = 'https://polar-shelf-77839.herokuapp.com/orders'
+            const url = 'http://localhost:5000/orders'
             fetch(url, {
                 method: "POST",
                 headers: {
@@ -58,19 +56,24 @@ const Purchase = () => {
                     toast('Order ready for pay')
 
                 })
-        }
+        } 
+        
+  if(errors.totalOrder){
+      setNewOrder(false)
 
-    }
+  }
     return (
 
-        <div class="card card-side bg-base-100 shadow-xl">
+        <div class="card  card-side bg-base-100 shadow-xl">
 
-            <div class="card  card-compact  bg-base-100 shadow-xl">
-                <figure ><img src={img} alt="Shoes" /></figure>
+            <div class="card  card-compact w-3/6 bg-base-100 shadow-xl">
+                <figure className='w-2/4'><img src={img} alt="Shoes" /></figure>
                 <div class="card-body">
-                    <h2 class="card-title">{name}</h2>
-                    <p>{description}</p>
-                    <p>{quantity}</p>
+                <h2 class="card-title">{name}</h2>
+    
+    <h3><span>Price : </span>{price} RM / Product</h3>
+    <h3 >In Stock : {quantity} Product</h3>
+    <h3>Minium order atleast {minimumOrder} Product Applicable</h3>
                     <div class="card-actions justify-end">
 
                     </div>
@@ -107,8 +110,18 @@ const Purchase = () => {
                                     value: true,
                                     message: 'Quantity is Required'
                                 },
+                                min:{
+                                    value:`${minimumOrder}`,
+                                    message:'Can not less than minimum order'
+                                },
+                                max:{
+                                    value:`${quantity}`,
+                                  message:'Can not more than in stock quantity'
+                                }
+                               
                             })}
                         />
+                      {errors.totalOrder && <p className='text-primary'>{errors.totalOrder.message}</p>}
 
                     </div>
                     <div class="form-control">

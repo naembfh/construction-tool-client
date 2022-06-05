@@ -10,7 +10,7 @@ const AddReview = () => {
 const onsubmit=data=>{
 data.rating=rating;
 
-const url = 'https://polar-shelf-77839.herokuapp.com/reviews'
+const url = 'http://localhost:5000/reviews'
 fetch(url, {
     method: "POST",
     headers: {

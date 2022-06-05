@@ -1,18 +1,26 @@
 import { async } from '@firebase/util';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 const CheckoutForm = ({myorder}) => {
+  const [user]=useAuthState(auth)
+  // console.log(user)
     const {totalPrice}=myorder;
+
     // console.log(totalPrice)
     const stripe = useStripe();
   const elements = useElements();
+  const [success,setSuccess]=useState('')
+  const [transactionId,setTransactionId]=useState('')
   const [cardError,setCardError]=useState('')
   const [clientSecret, setClientSecret] = useState("");
-  console.log(clientSecret)
+  const [processing,setProccessing]=useState(false)
+  
 
 useEffect(()=>{
-    fetch('', {
+    fetch('http://localhost:5000/create-payment-intent', {
         method: 'POST',
         headers: {
             'content-type': 'application/json',
@@ -49,7 +57,52 @@ useEffect(()=>{
           });
 
     // console.log(error)
-    setCardError(error.message || '')
+    setCardError(error?.message || '')
+    setSuccess('')
+    setProccessing(true)
+    // confirm card payment
+
+    const {paymentIntent, error:intentError} = await stripe.confirmCardPayment(
+      clientSecret,
+      {
+        payment_method: {
+          card: card,
+          billing_details: {
+            name:user?.displayName,
+            email:user?.email,
+          },
+        },
+      },
+    );
+    if(intentError){
+      setCardError(intentError?.message)
+      setProccessing(false)
+    }else{
+      setCardError(``)
+      // console.log(paymentIntent)
+      setTransactionId(paymentIntent?.id)
+      setSuccess('Congrats! Your payment is completed')
+
+      // 
+const payment={
+  transactionId:paymentIntent.id,
+  paid:totalPrice,
+  name:myorder.name,
+}
+      fetch(`http://localhost:5000/orders/${myorder._id}`,{
+        method:"PATCH",
+        headers:{
+          'content-type':'application/json'
+        },
+        body:JSON.stringify(payment)
+        
+      })
+      .then(res=>res.json())
+      .then(data=>{
+        setProccessing(false)
+        console.log(data)
+      })
+    }
   }
     return (
        <>
@@ -70,11 +123,14 @@ useEffect(()=>{
           },
         }}
       />
-      <button className='btn btn-xs btn-success mt-4' type="submit" disabled={!useStripe }>
+      <button className='btn btn-xs btn-success mt-4' type="submit" disabled={!useStripe || !clientSecret }>
         Pay
       </button>
     </form>
     {cardError && <p className='text-xs text-primary'>{cardError}</p>}
+    {success && <div>
+      <p className='text-xs text-green-300'>{success}</p> <p className='text-xs text-green-300'>Your trnsaction Id {transactionId}</p>
+      </div>}
        </>
     );
 };

@@ -14,7 +14,7 @@ const Myprofile = () => {
         const name=user.displayName;
         data.name=name;
         
-        fetch(`https://polar-shelf-77839.herokuapp.com/user/${user?.email}`,{
+        fetch(`http://localhost:5000/user/${user?.email}`,{
     method:'PUT',
     headers:{
         'content-type':'application/json'

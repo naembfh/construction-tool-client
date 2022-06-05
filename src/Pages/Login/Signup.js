@@ -115,7 +115,7 @@ const Signup = () => {
 
                 </label>
                 {errorElement}
-               <input className='btn btn-primary w-full' type="submit" value='Login' />
+               <input className='btn btn-primary w-full' type="submit" value='Sign UP' />
                <p className='text-sm'><span>Already have an Account? </span><Link className='text-primary' to='/login'>Please Login</Link></p>
                </form>
                 

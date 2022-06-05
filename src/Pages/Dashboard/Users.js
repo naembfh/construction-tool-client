@@ -4,7 +4,7 @@ import Loading from '../Shared/Loading';
 import Userrow from './Userrow';
 
 const Users = () => {
-    const {data :users,isLoading,refetch}=useQuery('users',()=>fetch('https://polar-shelf-77839.herokuapp.com/user',{
+    const {data :users,isLoading,refetch}=useQuery('users',()=>fetch('http://localhost:5000/user',{
         method:'GET',
         headers:{
             authorization:`Bearer ${localStorage.getItem('accessToken')}`
@@ -26,7 +26,7 @@ const Users = () => {
         <th>Email</th>
         <th>Admin</th>
 
-        <th>Favorite Color</th>
+       
       </tr>
     </thead>
    

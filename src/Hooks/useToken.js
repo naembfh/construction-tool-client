@@ -16,7 +16,7 @@ const gCurrentUser={gEmail};
 
 
 if(email ||gEmail){
-fetch(`https://polar-shelf-77839.herokuapp.com/user/${email ||gEmail}`,{
+fetch(`http://localhost:5000/user/${email ||gEmail}`,{
     method:'PUT',
     headers:{
         'content-type':'application/json'

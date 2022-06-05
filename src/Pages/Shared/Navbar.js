@@ -3,10 +3,14 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Navigate, NavLink, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import { signOut} from 'firebase/auth';
+import useAdmin from '../../Hooks/useAdmin';
+import useToken from '../../Hooks/useToken';
 
 
 const Navbar = () => {
   const [user, loading, error] = useAuthState(auth);
+  const [admin]=useAdmin(user)
+  const [token]=useToken(user)
   const navigate=useNavigate()
   const logOut=()=>{
     signOut(auth)
@@ -17,11 +21,11 @@ const Navbar = () => {
 
    const menu =<>
              <li><NavLink to='/'>Home</NavLink></li>
+             <li><NavLink to='/products'>Products</NavLink></li>
              <li><NavLink to='/blogs'>Blogs</NavLink></li>
-             <li><NavLink to='/portfolio'>My Portfolio</NavLink></li>
-{
-              user && <li><NavLink to='/dashboard'>Dashboard</NavLink></li>
-            } 
+             <li><NavLink to='/portfolio'>Portfolio</NavLink></li>
+ <li><NavLink to='/dashboard'>Dashboard</NavLink></li>
+             
              
 
             {user ? <li><button onClick={logOut}>Sign Out</button> <p className='uppercase border-2'>{user?.displayName}</p></li> : <li><NavLink to='/login'>Login</NavLink></li>}
@@ -30,7 +34,7 @@ const Navbar = () => {
         
    </>
     return (
-        <div class="navbar bg-base-100">
+        <div class="navbar  bg-base-100">
   <div class="navbar-start">
     <div class="dropdown">
       <label tabindex="0" class="btn btn-ghost lg:hidden">

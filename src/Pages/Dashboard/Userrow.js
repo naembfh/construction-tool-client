@@ -3,8 +3,9 @@ import { toast } from 'react-toastify';
 
 const Userrow = ({user,index,refetch}) => {
     const {email,role,name}=user;
+    console.log(user)
     const makeAdmin=()=>{
-fetch(`https://polar-shelf-77839.herokuapp.com/user/admin/${email}`,{
+fetch(`http://localhost:5000/user/admin/${email}`,{
     method:"PUT",
     headers:{
         authorization:`Bearer ${localStorage.getItem('accessToken')}`
@@ -32,7 +33,7 @@ fetch(`https://polar-shelf-77839.herokuapp.com/user/admin/${email}`,{
         <th>{name}</th>
         <td>{email}</td>
         <th>{role !=="admin" &&<button onClick={makeAdmin} className='btn btn-xs btn-primary'>Make Admin</button>} </th>
-        <td>Blue</td>
+       
       </tr>
       
     );

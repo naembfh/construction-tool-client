@@ -1,23 +1,43 @@
 import React, { useEffect, useState } from 'react';
-import Product from '../Home/Product';
+
+import ManageProducut from './ManageProducut';
 
 const ManageProducts = () => {
     const [products,setProducts]=useState([])
     useEffect(()=>{
-        const url='https://polar-shelf-77839.herokuapp.com/product'
+        const url='http://localhost:5000/product'
         fetch(url)
         .then(res=>res.json())
         .then(data=>setProducts(data))
     },[])
     
     return (
-        <div>
-            <h1>Our Products {products.length}</h1>
-            {products.map(product=> <Product
+
+
+        <div class="overflow-x-auto">
+        <table class="table w-full">
+         
+          <thead>
+            <tr>
+              <th>index</th>
+              <th>Name</th>
+              <th>Action</th>
+             
+            </tr>
+          </thead>
+          {products.map((product,index)=> <ManageProducut
             product={product}
             key={product._id}
-            ></Product>)}
-        </div>
+            index={index}
+            ></ManageProducut>)}
+          <tbody>
+         
+            
+          </tbody>
+        </table>
+      </div>
+
+
     );
 };
 
