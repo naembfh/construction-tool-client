@@ -23,7 +23,7 @@ const Dashboard = () => {
                 <ul class="menu p-4 overflow-y-auto w-48 bg-base-100 text-base-content">
                     {/* <!-- Sidebar content here --> */}
                     <li>{!admin && <NavLink to="/dashboard">My Orders</NavLink>}</li>
-                    <li>{!admin && <NavLink to="/dashboard/myOrder">Add A Review </NavLink>}</li>
+                    <li>{!admin && <NavLink to="/dashboard/myReview">Add A Review </NavLink>}</li>
                     <li> <NavLink to="/dashboard/myProfile">My Profile </NavLink></li>
                     <li>{admin && <NavLink to="/dashboard/users">Make Admin </NavLink>}</li>
                     <li>{admin && <NavLink to="/dashboard/addProduct">Add Product </NavLink>}</li>

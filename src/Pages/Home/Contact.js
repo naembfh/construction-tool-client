@@ -3,15 +3,15 @@ import React from 'react';
 const Contact = () => {
   return (
 
-    <div className='bg-gradient-to-r from-secondary to-primary"'>
-      <div className='my-2 py-2 border '>
+    <div >
+      <div  >
       <p className='text-3xl text-center font-bold'>
         Contact Us
       </p>
       <div class="hero min-h-screen   ">
 
         <div class="hero-content flex-col lg:flex-row-reverse">
-          <div class="text-center lg:text-left">
+          <div class="text-center w-5/12 lg:text-left">
             <h1 class="text-5xl font-bold">
               Let's chat.</h1>
             <p class="py-6">We are always connected to our clients. i's makes us understand the
@@ -43,7 +43,7 @@ const Contact = () => {
                 rows={6}
               ></textarea>
               <div class="form-control mt-6">
-                <button class="btn btn-primary">Submit</button>
+                <button class="btn btn-primary bg-gradient-to-r from-secondary to-primary">Submit</button>
               </div>
             </div>
           </div>

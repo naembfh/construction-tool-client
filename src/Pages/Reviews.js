@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Review from './Review';
 
 const Reviews = () => {
@@ -9,14 +10,16 @@ fetch('http://localhost:5000/reviews')
 .then(data=>setReviews(data))
     },[])
     return (
-       <div className='container border'>
+       <div className='container mt-5'>
            <h1 className='text-3xl text-center m-3'>Reviews And FeedBack</h1>
             <div className='grid  gap-2 md:grid-cols-3 sm:grid-cols-1'>
             {reviews.map(review=> <Review
             key={review._id}
             review={review}
             ></Review>)}
+            
         </div>
+        
        </div>
     );
 };
